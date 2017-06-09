@@ -1,7 +1,7 @@
 # Facebook Crawler
 
 facebook から会話データをクロールするスクリプト．
-
+facebook sdk for pythonを使用．
 
 # How to create the environment
 
@@ -39,11 +39,11 @@ IDが分かったことで，GETメソッドが使える．
 下記に一例を示す．（アクセストークンは省略）
 グループ内のfeedを取得する．
 
-    http://www.facebook.com/group_id/feed
+    http://graph.facebook.com/group_id/feed
 
 エントリID（投稿ID）からそれに付随するコメント（返信）を取得する．
 
-    http://www.facebook.com/entry_id/comments
+    http://graph.facebook.com/entry_id/comments
 
 
 

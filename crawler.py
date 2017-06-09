@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import facebook
-from access_token import TOKEN
+from access_token import TOKEN, GROUP_ID
 
 graph = facebook.GraphAPI(TOKEN)
 
 # グループidからfeedを取得
-response = graph.get_object(id='116489408559957/feed')
+response = graph.get_object(id=GROUP_ID + '/feed')
 print('feed数: ', len(response['data']))
 entry_ids = []
 for entry in response['data']:
