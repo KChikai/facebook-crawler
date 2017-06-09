@@ -14,7 +14,7 @@ facebook から会話データをクロールするスクリプト．
 
 ```
     pip install requests
-    pip install facebook-sdk []()
+    pip install facebook-sdk
 ```
 
 
