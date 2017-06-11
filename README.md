@@ -17,6 +17,16 @@ facebook sdk for pythonを使用．
     pip install facebook-sdk
 ```
 
+4. `access_token.py`というファイルを`crawler.py`と同じディレクトリ下に作り，以下のように記述．
+
+```python
+
+TOKEN = '************'      # 2で作取得したアクセストークンを記入
+GROUP_ID = '123456789'      # クロールしたいグループIDを記入（調べ方はGET Methodを参照）
+
+```
+
+
 
 # GET Method
 
