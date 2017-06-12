@@ -30,20 +30,3 @@ for i in range(len(months)):
     # save feed's ids (API制限がかかったときのための保険)
     with open('./crawling_data/entry_ids_' + str(months[i]) + '.list', 'w') as f:
         json.dump(entry_ids, f)
-
-
-# comment内に返信しているcommentを取得
-# for entry_id in entry_ids:                                                              # グループ内のEntry ID
-#     response = graph.get_object(id=entry_id + '/comments', timeout=10)                  # Entry内のcommentsを取得
-#     for entry in response['data']:
-#         comment_id = str(entry['id'])
-#         response_comments = graph.get_object(id=comment_id + '/comments', timeout=10)   # 各commentに付随するcommentsを取得(response)
-#         if len(response_comments['data']) != 0:
-#             print('+++ start of talk +++')
-#             print(entry['message'])                                                     # responseを持っているcommentを表示
-#             for comment in response_comments['data']:
-#                 print(comment['message'])                                               # commentに対するresponseを表示
-#                 # print(comment)
-#             print('+++ end of talk +++')
-#             print('')
-#     print('------------ end of entry ---------------')

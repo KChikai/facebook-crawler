@@ -21,7 +21,7 @@ facebook sdk for pythonを使用．
 ```
 
 
-4. `access_token.py`というファイルを`crawler.py`と同じディレクトリ下に作り，以下のように記述．
+4. `access_token.py`というファイルを`feed_crawler.py`と同じディレクトリ下に作り，以下のように記述．
 
 ```python
 
