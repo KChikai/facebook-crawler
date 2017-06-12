@@ -56,5 +56,10 @@ IDが分かったことで，GETメソッドが使える．
     http://graph.facebook.com/entry_id/comments
 
 
+# Request Limit
+
+facebook graph API のリクエスト制限は一分間に600回程度とからしい．
+TwitterAPIに比べてゆるい（？）
+
 
 
