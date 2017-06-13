@@ -27,7 +27,7 @@ for i in range(len(months)):
         for entry_id in entry_ids:                                                              # グループ内のEntry ID
             response = graph.get_object(id=entry_id + '/comments', timeout=10)                  # Entry内のcommentsを取得
             request_count += 1
-            if request_count >= 500:
+            if request_count >= 400:
                 t1 = time.time()
                 rest = 600 - (t1 - t0) if 600 - (t1 - t0) > 0 else 0
                 print('***** sleep *****', rest, '[s]')
@@ -39,7 +39,7 @@ for i in range(len(months)):
                 comment_id = str(entry['id'])
                 response_comments = graph.get_object(id=comment_id + '/comments', timeout=10)   # 各commentに付随するcommentsを取得(response)
                 request_count += 1
-                if request_count >= 500:
+                if request_count >= 400:
                     t1 = time.time()
                     rest = 600 - (t1 - t0) if 600 - (t1 - t0) > 0 else 0
                     print('***** sleep *****', rest, '[s]')
