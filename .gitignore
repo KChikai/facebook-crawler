@@ -2,3 +2,6 @@
 
 __pycache__
 access_token.py
+
+crawling_data/*
+!crawling_data/.gitkeep

@@ -2,6 +2,7 @@
 
 import re
 import json
+import time
 import facebook
 from access_token import TOKEN
 
@@ -12,6 +13,9 @@ url_regex = re.compile(r"[https?|ftp]://[A-Za-z0-9\-.]{0,62}?\.([A-Za-z0-9\-.]{1
 
 # グループidからfeed_ids_listをロード
 months = [month for month in range(4, 11)]                  # 4~10月のデータを対象にする (プロ野球のシーズン)
+
+request_count = 0
+t0 = time.time()
 for i in range(len(months)):
 
     # load feed's ids
@@ -22,9 +26,26 @@ for i in range(len(months)):
     with open('./crawling_data/conv_' + str(months[i]) + '.txt', 'w') as f:
         for entry_id in entry_ids:                                                              # グループ内のEntry ID
             response = graph.get_object(id=entry_id + '/comments', timeout=10)                  # Entry内のcommentsを取得
+            request_count += 1
+            if request_count >= 500:
+                t1 = time.time()
+                rest = 600 - (t1 - t0) if 600 - (t1 - t0) > 0 else 0
+                print('***** sleep *****', rest, '[s]')
+                time.sleep(rest)
+                request_count = 0
+                t0 = time.time()
+
             for entry in response['data']:
                 comment_id = str(entry['id'])
                 response_comments = graph.get_object(id=comment_id + '/comments', timeout=10)   # 各commentに付随するcommentsを取得(response)
+                request_count += 1
+                if request_count >= 500:
+                    t1 = time.time()
+                    rest = 600 - (t1 - t0) if 600 - (t1 - t0) > 0 else 0
+                    print('***** sleep *****', rest, '[s]')
+                    time.sleep(rest)
+                    request_count = 0
+                    t0 = time.time()
                 if len(response_comments['data']) != 0:
                     print('+++ start of talk +++')
                     print(entry['message'])                                                     # responseを持っているcommentを表示
