@@ -25,7 +25,7 @@ facebook sdk for pythonを使用．
 
 ```python
 
-TOKEN = '************'      # 2で作取得したアクセストークンを記入
+TOKEN = '************'      # 2で取得したアクセストークンを記入
 GROUP_ID = '123456789'      # クロールしたいグループIDを記入（調べ方はGET Methodを参照）
 
 ```
@@ -86,4 +86,8 @@ feedでのlimit指定を10000件に設定した場合，
     b'{"error":{"code":1,"message":"Please reduce the amount of data you\'re asking for, then retry your request"}}'
 
 量を減らしてや〜と言われている．
+
+2017.6.14 追記：現時点ではリクエスト回数400回毎に600秒掛かるようにリクエスト制限をかけている．
+これはあくまで，経験則的なものであるので全てのクローリング方法で通用するものではないと思う．
+
 
