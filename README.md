@@ -91,3 +91,22 @@ feedでのlimit指定を10000件に設定した場合，
 これはあくまで，経験則的なものであるので全てのクローリング方法で通用するものではないと思う．
 
 
+# Error
+
+## Data Not Found
+
+データクロールの際にidからデータを取得できなかった場合には，`facebook.GraphAPIError`が吐かれる．
+実際の受け取ったデータの中身はこんな感じ．
+
+    {'error': {'fbtrace_id': 'APCt0mvkOi5', 'type': 'GraphMethodException', 'code': 100, 'message': "Unsupported get request. Object with ID '116489408559957_237161279826102' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"}}
+
+
+このエラーコードを避けるには`facebook/__init__.py`の271行目を以下に変更
+
+```python
+if result and isinstance(result, dict) and result.get("error"):
+    if result.get("error", {}).get("code") == 100:
+        return result
+    else:
+        raise GraphAPIError(result)
+```
