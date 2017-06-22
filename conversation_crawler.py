@@ -4,7 +4,7 @@ import re
 import json
 import time
 import facebook
-from access_token import TOKEN
+from access_token import TOKEN, YEARS, MONTHS
 
 graph = facebook.GraphAPI(TOKEN)
 
@@ -12,8 +12,8 @@ graph = facebook.GraphAPI(TOKEN)
 url_regex = re.compile(r"[https?|ftp]://[A-Za-z0-9\-.]{0,62}?\.([A-Za-z0-9\-.]{1,255})/?[A-Za-z0-9.\-?=#%/]*")
 
 # グループidからfeed_ids_listをロード
-years = [2013, 2014, 2015]
-months = [month for month in range(4, 11)]                  # 4~10月のデータを対象にする (プロ野球のシーズン)
+years = YEARS
+months = MONTHS
 
 request_count = 0
 t0 = time.time()

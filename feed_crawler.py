@@ -4,13 +4,13 @@ import facebook
 import json
 import datetime
 import time
-from access_token import TOKEN, GROUP_ID
+from access_token import TOKEN, GROUP_ID, YEARS, MONTHS
 
 graph = facebook.GraphAPI(TOKEN)
 
 # グループidからfeedを取得
-years = [2013, 2014, 2015]
-months = [month for month in range(4, 11)]                  # 4~10月のデータを対象にする (プロ野球のシーズン)
+years = YEARS
+months = MONTHS
 
 for year in years:
     for month in months:
