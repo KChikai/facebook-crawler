@@ -12,7 +12,7 @@ graph = facebook.GraphAPI(TOKEN)
 url_regex = re.compile(r"[https?|ftp]://[A-Za-z0-9\-.]{0,62}?\.([A-Za-z0-9\-.]{1,255})/?[A-Za-z0-9.\-?=#%/]*")
 
 # グループidからfeed_ids_listをロード
-years = [2014, 2015]
+years = [2013, 2014, 2015]
 months = [month for month in range(4, 11)]                  # 4~10月のデータを対象にする (プロ野球のシーズン)
 
 request_count = 0
@@ -29,7 +29,7 @@ for year in years:
             for index, entry_id in enumerate(entry_ids):                                                              # グループ内のEntry ID
                 response = graph.get_object(id=entry_id + '/comments', timeout=10)                  # Entry内のcommentsを取得
                 request_count += 1
-                if request_count >= 400:
+                if request_count >= 450:
                     t1 = time.time()
                     rest = 600 - (t1 - t0) if 600 - (t1 - t0) > 0 else 0
                     print('***** sleep *****', rest, '[s]')
@@ -42,7 +42,7 @@ for year in years:
                         comment_id = str(entry['id'])
                         response_comments = graph.get_object(id=comment_id + '/comments', timeout=10)   # 各commentに付随するcommentsを取得(response)
                         request_count += 1
-                        if request_count >= 400:
+                        if request_count >= 450:
                             t1 = time.time()
                             rest = 600 - (t1 - t0) if 600 - (t1 - t0) > 0 else 0
                             print('***** sleep *****', rest, '[s]')
