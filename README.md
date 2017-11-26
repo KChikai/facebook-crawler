@@ -32,6 +32,8 @@ MONTHS = [i for i in range(4, 11)]  # 取得したい月をリストで記入 (�
 
 ```
 
+4. `feed_crawler.py`で，投稿されたポストのIDリストを月別に取得．
+`conversation_crawler.py`はクロールされたIDリストから，返信のついているポストを会話としてペアでテキストファイルに格納する．
 
 <br>
 
